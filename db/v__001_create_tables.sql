@@ -1,0 +1,25 @@
+CREATE TABLE people (
+id INT NOT NULL PRIMARY KEY,
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+email VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE address (
+id INT NOT NULL PRIMARY KEY,
+people_id INT NOT NULL,
+street_name VARCHAR(50) NOT NULL,
+suburb VARCHAR(50) NOT NULL,
+post_code VARCHAR(50) NOT NULL,
+FOREIGN KEY (people_id) REFERENCES people(id)
+);
+
+CREATE TABLE jobs (
+id INT NOT NULL PRIMARY KEY,
+people_id INT NOT NULL,
+employer_name VARCHAR(50) NOT NULL,
+start_date DATE NOT NULL,
+end_date DATE NOT NULL,
+`role` VARCHAR(50) NOT NULL,
+FOREIGN KEY (people_id) REFERENCES people(id)
+);
